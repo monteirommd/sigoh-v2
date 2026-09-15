@@ -1,0 +1,319 @@
+/* ============================================================
+   Estilos da aplicação.
+
+   Paleta escrita à mão (sem framework) justamente para poder verificar
+   o contraste de cada combinação texto/fundo contra o critério WCAG AA
+   (mínimo 4.5:1 para texto normal). As razões apuradas estão anotadas
+   ao lado de cada cor.
+   ============================================================ */
+
+:root {
+  --azul: #14539e;          /* sobre branco: 7.0:1  */
+  --azul-escuro: #0e3c73;   /* estado hover         */
+  --verde: #12704f;         /* sobre branco: 5.7:1  */
+  --vermelho: #a52218;      /* sobre branco: 6.7:1  */
+  --ambar: #7a5a00;         /* sobre branco: 5.9:1  */
+  --cinza-escuro: #3f4750;  /* sobre branco: 9.2:1  */
+  --texto: #14181d;         /* sobre branco: 16.4:1 */
+  --texto-suave: #4a5460;   /* sobre branco: 7.6:1  */
+  --fundo: #f4f6f9;
+  --superficie: #ffffff;
+  --borda: #cbd4e0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* Conteúdo lido por leitores de tela, invisível na tela.
+   Usado em <caption> de tabelas e rótulos de campos em linha. */
+.apenas-leitor-tela {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Login ---------- */
+.tela-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--azul);
+}
+
+.cartao-login {
+  width: 100%;
+  max-width: 380px;
+  padding: 2rem;
+  background: var(--superficie);
+  border-radius: 10px;
+}
+
+.cartao-login h1 {
+  margin-bottom: 0.25rem;
+}
+
+.legenda {
+  margin: 0 0 1.5rem;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+/* ---------- Formulários ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input,
+select {
+  padding: 0.55rem;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 5px;
+}
+
+/* Indicador de foco visível — navegação por teclado */
+:is(input, select, button, a):focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  padding: 0.55rem 1.1rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.botao-primario {
+  background: var(--azul);
+  color: #fff;
+}
+
+.botao-primario:hover:not(:disabled) {
+  background: var(--azul-escuro);
+}
+
+.botao-primario:disabled {
+  background: var(--cinza-escuro);
+  cursor: not-allowed;
+}
+
+.botao-secundario {
+  background: var(--superficie);
+  color: var(--azul);
+  border-color: var(--azul);
+}
+
+.botao-perigo {
+  background: var(--superficie);
+  color: var(--vermelho);
+  border-color: var(--vermelho);
+}
+
+.acoes-formulario {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mensagem-erro {
+  color: var(--vermelho);
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+/* ---------- Estrutura da aplicação ---------- */
+.aplicacao {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0.9rem 1.5rem;
+  background: var(--azul);
+  color: #fff;
+}
+
+.marca {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.cabecalho nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.cabecalho nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.cabecalho nav a:hover,
+.cabecalho nav a.active {
+  border-bottom-color: #fff;
+}
+
+.identificacao {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.conteudo {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.rodape {
+  padding: 1rem 1.5rem;
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+/* ---------- Indicadores de ocupação ---------- */
+.grade-indicadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.indicador {
+  padding: 1rem;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+}
+
+.indicador h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+
+.indicador-valor {
+  margin: 0.25rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--azul);
+}
+
+.indicador-detalhe {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+/* ---------- Tabelas ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--borda);
+}
+
+th {
+  background: #eef2f7;
+  font-size: 0.85rem;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.celula-acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Status sinalizado por cor E por texto — cor sozinha não pode ser
+   o único veículo de informação (critério WCAG 1.4.1). */
+.etiqueta {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.etiqueta-disponivel { background: var(--verde); }
+.etiqueta-ocupado    { background: var(--vermelho); }
+.etiqueta-limpeza    { background: var(--ambar); }
+.etiqueta-bloqueado  { background: var(--cinza-escuro); }
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 640px) {
+  .cabecalho {
+    gap: 0.75rem;
+  }
+
+  .identificacao {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .conteudo {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,25 @@
+# Sobe apenas o banco de dados, para que nenhum integrante precise instalar
+# e configurar o PostgreSQL na propria maquina.
+#
+#   docker compose up -d
+#
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sigoh-postgres
+    environment:
+      POSTGRES_DB: sigoh
+      POSTGRES_USER: sigoh
+      POSTGRES_PASSWORD: sigoh
+    ports:
+      - "5432:5432"
+    volumes:
+      - sigoh-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sigoh -d sigoh"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  sigoh-pgdata:

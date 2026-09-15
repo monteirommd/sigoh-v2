@@ -1,0 +1,9 @@
+# Perfil de desenvolvimento. Ativar com:  --spring.profiles.active=dev
+# Habilita a carga de dados de demonstracao (ver DevDataSeeder).
+spring:
+  jpa:
+    show-sql: true
+
+sigoh:
+  seed:
+    enabled: true
