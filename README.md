@@ -327,3 +327,9 @@ Para outro endereço, copie `.env.example` para `.env` e ajuste.
 | Integrante    | Contribuição  |
 | ------------- | ------------- |
 | _(preencher)_ | _(preencher)_ |
+
+## 8. Links externos
+
+## Repositório no GitHub -> https://github.com/monteirommd/sigoh-v2
+
+## Protótipo no Figma -> https://www.figma.com/design/mXVev8UAVkNkknuRpBZl4W/Mapa-de-Leitos?node-id=0-1&t=fGTUPUsybmEpxAgd-1
